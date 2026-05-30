@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class ConfirmOperationPostData {
+public class ConfirmRequest {
     @NotBlank
     private String code;
 

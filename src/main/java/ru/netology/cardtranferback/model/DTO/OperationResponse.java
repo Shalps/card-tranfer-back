@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class TransferPostDataResponse {
+public class OperationResponse {
     @NotBlank
     private String operationId;
 }

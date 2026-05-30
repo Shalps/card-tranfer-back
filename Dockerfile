@@ -11,8 +11,11 @@ VOLUME /tmp
 
 # Configure non-root user
 RUN adduser -S spring-user
+RUN apk add --no-cache musl-locales musl-locales-lang
+ENV LANG=ru_RU.UTF-8
+ENV LC_ALL=ru_RU.UTF-8
 USER spring-user
-
+EXPOSE 8081
 WORKDIR /application
 
 # Copy Spring Boot application layers

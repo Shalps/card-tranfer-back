@@ -1,4 +1,4 @@
-package ru.netology.cardtranferback.model.DTO;
+package ru.netology.cardtranferback.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

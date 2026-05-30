@@ -1,5 +1,6 @@
 package ru.netology.cardtranferback.controller;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -16,14 +17,17 @@ import ru.netology.cardtranferback.service.TransferService;
 @Log4j2
 @RestController
 @CrossOrigin(origins = "http://localhost:3000/")
-public class TranferController {
+@AllArgsConstructor
+public class TransferController {
 
     private TransferService transferService;
 
     @PostMapping("/transfer")
     public ResponseEntity<?> initTransfer(@RequestBody @Validated TransferRequest req) {
         log.info("Transfer initiated: from={}, to={}, amount={}",
-                req.getCardFromNumber(), req.getCardToNumber(), req.getAmount().getValue());
+                req.getCardFromNumber(),
+                req.getCardToNumber(),
+                req.getAmount().getValue());
 
         try {
             String operationId = transferService.initTransfer(req);
@@ -37,7 +41,7 @@ public class TranferController {
     @PostMapping("/confirmOperation")
     public ResponseEntity<?> confirmMoney(@RequestBody @Validated ConfirmRequest request) {
         try {
-            transferService.confirmTranfer(request.getOperationId(), request.getCode());
+            transferService.confirmTransfer(request.getOperationId(), request.getCode());
             return ResponseEntity.ok(new OperationResponse(request.getOperationId()));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));
