@@ -1,0 +1,24 @@
+
+###
+POST http://localhost:8081/transfer
+Content-Type: application/json
+
+{
+  "cardFromNumber": "5469123456781234",
+  "cardFromValidTill": "12/26",
+  "cardFromCVV": "123",
+  "cardToNumber": "5469876543215678",
+  "amount": {
+    "value": 100,
+    "currency": "RUR"
+  }
+}
+###
+POST http://localhost:8081/confirmOperation
+Content-Type: application/json
+
+{
+  "operationId": "239e6acc-4032-49a4-b981-53f6a1f4806e",
+  "code": "0000"
+}
+
